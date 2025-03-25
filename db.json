@@ -1,0 +1,10 @@
+{
+  "users": [
+    { "id": 1, "name": "Alice", "age": 25 },
+    { "id": 2, "name": "Bob", "age": 30 }
+  ],
+  "posts": [
+    { "id": 1, "title": "React Tutorial", "content": "Learning React is fun!" },
+    { "id": 2, "title": "Json Server", "content": "A quick way to mock REST APIs." }
+  ]
+}
