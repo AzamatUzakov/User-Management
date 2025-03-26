@@ -4,7 +4,7 @@
       "id": "1",
       "name": "John Doe",
       "email": "john@example.com",
-      "status": "Active",
+      "status": "Inactive",
       "role": "Admin",
       "lastActive": "2 hours ago"
     },
@@ -28,17 +28,17 @@
       "id": "4",
       "name": "Sarah kmk",
       "email": "sarah@example.com",
-      "status": "Active",
+      "status": "Inactive",
       "role": "Editor",
       "lastActive": "Just now"
     },
     {
-      "id": "0.7148087898395412",
-      "name": "Feruzc",
-      "email": "Fedcdya@gmail.com",
+      "id": "0.4916521246320409",
+      "name": "Azamat",
+      "email": "uzakovazamat534@gmail.com",
       "status": "Pending",
-      "role": "Viewer",
-      "lastActive": "5 hour ago"
+      "role": "Editor",
+      "lastActive": "4 hour ago"
     }
   ]
 }

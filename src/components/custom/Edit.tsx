@@ -104,7 +104,7 @@ const Edit: React.FC<EditProps> = ({ setModal, setEdit, edit }) => {
 
                     <div className="flex justify-end gap-3 mt-4">
                         <Button variant="outline" onClick={() => setModal(false)}>Cancel</Button>
-                        <Button type="submit">Add User</Button>
+                        <Button type="submit">Edit</Button>
                     </div>
                 </form>
             </div>
