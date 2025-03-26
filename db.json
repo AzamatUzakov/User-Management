@@ -2,10 +2,10 @@
   "users": [
     {
       "id": "1",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "status": "Inactive",
-      "role": "Admin",
+      "name": "John Doew",
+      "email": "johnDD@example.com",
+      "status": "Active",
+      "role": "Viewer",
       "lastActive": "2 hours ago"
     },
     {
@@ -33,12 +33,12 @@
       "lastActive": "Just now"
     },
     {
-      "id": "0.4916521246320409",
-      "name": "Azamat",
-      "email": "uzakovazamat534@gmail.com",
+      "id": "0.9059848908166923",
+      "name": "Bobik",
+      "email": "sw@gmail.com",
       "status": "Pending",
-      "role": "Editor",
-      "lastActive": "4 hour ago"
+      "role": "Viewer",
+      "lastActive": "1 hour ago"
     }
   ]
 }

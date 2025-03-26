@@ -21,6 +21,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Edit from "./Edit";
+import { Skeleton } from "../ui/skeleton";
 
 
 interface UserTableProps {
@@ -37,7 +38,7 @@ const UserTable: React.FC<UserTableProps> = () => {
     }
 
     const { setUsers, filteredUser, setFilteredUser } = context
-    const { fetchData } = useApi(import.meta.env.VITE_PUBLIC_PATH)
+    const { fetchData, loading, error } = useApi(import.meta.env.VITE_PUBLIC_PATH)
     useEffect(() => {
         fetchData("/users", method.get)
             .then(res => {
@@ -64,7 +65,6 @@ const UserTable: React.FC<UserTableProps> = () => {
         }
 
     }
-    console.log(edit);
 
 
 
@@ -72,6 +72,9 @@ const UserTable: React.FC<UserTableProps> = () => {
     return (
         <>
             <div className="">
+
+                {loading && <span className="text-3xl text-center my-5 ">Loading...</span>}
+                {error && <span className="text-red-500">Произошла ошибка при загрузке данных!</span>}
 
                 <Table className="w-full rounded-lg shadow border border-gray-200">
                     <TableCaption>A list of your recent invoices.</TableCaption>
@@ -85,7 +88,9 @@ const UserTable: React.FC<UserTableProps> = () => {
                             <TableHead className="py-4 px-6 text-gray-400">Actions</TableHead>
                         </TableRow>
                     </TableHeader>
-                    <TableBody>
+                     <TableBody>
+
+
                         {filteredUser.map((user) => (
                             <TableRow key={user.id} className="border hover:bg-gray-50">
                                 <TableCell className="py-6 px-6 font-medium text-gray-800">{user.name}</TableCell>
@@ -111,6 +116,7 @@ const UserTable: React.FC<UserTableProps> = () => {
                                 </TableCell>
                             </TableRow>
                         ))}
+
                     </TableBody>
                 </Table>
                 {modal && <Edit setModal={setModal} setEdit={setEdit} edit={edit} />}
