@@ -22,19 +22,24 @@ export const useApi = (baseUrl: string) => {
     ) => {
       setLoading(true);
       try {
-        const res = await axios[method](baseUrl + path, {
-          data: body,
-          headers: headers,
-        });
+        let res;
 
-        if (res.status !== 200 && res.status !== 201) {
-          throw new Error("Something went wrong");
+        if (method === "get" || method === "delete") {
+          res = await axios[method](baseUrl + path, { headers });
+        } else {
+          res = await axios[method](baseUrl + path, body, { headers });
         }
+
+        if (res.status < 200 || res.status >= 300) {
+          throw new Error("Что-то пошло не так");
+        }
+
         setLoading(false);
         return res;
       } catch (e) {
         setError(true);
         setLoading(false);
+        console.error("Ошибка запроса:", e);
       }
     },
     [baseUrl]

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Button } from "../ui/button";
+import AddUser from "./Header";
 
 interface FilteredProps {
 
@@ -21,6 +21,7 @@ const Filtered: React.FC<FilteredProps> = () => {
                 >{btn}</button>
             ))
             }
+        
         </div >
     );
 }

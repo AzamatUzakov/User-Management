@@ -51,7 +51,7 @@ const UserTable: React.FC<UserTableProps> = () => {
         <>
             <div className="">
 
-                <Table className="w-full rounded-lg shadow border border-gray-200 rounded-2xl">
+                <Table className="w-full rounded-lg shadow border border-gray-200">
                     <TableCaption>A list of your recent invoices.</TableCaption>
                     <TableHeader>
                         <TableRow className="text-left font-semibold border-gray-200 rounded-2xl">
