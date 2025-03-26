@@ -1,6 +1,6 @@
 import UserContext from "@/context/UserContext";
 import { method, useApi } from "@/hooks/useApi";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 
 import {
@@ -20,6 +20,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import Edit from "./Edit";
 
 
 interface UserTableProps {
@@ -28,12 +29,14 @@ interface UserTableProps {
 
 const UserTable: React.FC<UserTableProps> = () => {
     const context = useContext(UserContext);
+    const [modal, setModal] = useState(false)
+    const [edit, setEdit] = useState([])
 
     if (!context) {
         throw new Error("ProductList must be used within a ProductProvider");
     }
 
-    const { users, setUsers, filteredUser, setFilteredUser } = context
+    const { setUsers, filteredUser, setFilteredUser } = context
     const { fetchData } = useApi(import.meta.env.VITE_PUBLIC_PATH)
     useEffect(() => {
         fetchData("/users", method.get)
@@ -45,7 +48,26 @@ const UserTable: React.FC<UserTableProps> = () => {
 
     }, [])
 
-    console.log(users);
+    const Delete = async (id: string) => {
+
+        try {
+            await fetch(import.meta.env.VITE_PUBLIC_PATH + `/users/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+
+        } catch (e) {
+            console.log(e);
+
+        }
+
+    }
+    console.log(edit);
+
+
+
 
     return (
         <>
@@ -82,8 +104,8 @@ const UserTable: React.FC<UserTableProps> = () => {
                                         <DropdownMenuContent>
                                             <DropdownMenuLabel >Actions</DropdownMenuLabel>
                                             <DropdownMenuSeparator />
-                                            <DropdownMenuItem className="text-green-600 flex items-center"><MdEdit className="mr-2" /> Edit</DropdownMenuItem>
-                                            <DropdownMenuItem className="text-red-600 flex items-center"><MdDelete className="mr-2" /> Delete</DropdownMenuItem>
+                                            <DropdownMenuItem className="text-green-600 flex items-center" onClick={() => { setModal(true); setEdit(user) }}><MdEdit className="mr-2" /> Edit</DropdownMenuItem>
+                                            <DropdownMenuItem className="text-red-600 flex items-center" onClick={() => Delete(user?.id)}><MdDelete className="mr-2" /> Delete</DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                 </TableCell>
@@ -91,10 +113,11 @@ const UserTable: React.FC<UserTableProps> = () => {
                         ))}
                     </TableBody>
                 </Table>
-
+                {modal && <Edit setModal={setModal} setEdit={setEdit} edit={edit} />}
             </div>
         </>
     );
+
 }
 
 export default UserTable;

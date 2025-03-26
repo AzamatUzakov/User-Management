@@ -10,10 +10,10 @@
     },
     {
       "id": "2",
-      "name": "Jane Smith",
-      "email": "jane@example.com",
-      "status": "Inactive",
-      "role": "Editor",
+      "name": "Jane Smith2323",
+      "email": "jcdcane@example.com",
+      "status": "Active",
+      "role": "Admin",
       "lastActive": "5 days ago"
     },
     {
@@ -26,27 +26,19 @@
     },
     {
       "id": "4",
-      "name": "Sarah Williams",
+      "name": "Sarah kmk",
       "email": "sarah@example.com",
       "status": "Active",
       "role": "Editor",
       "lastActive": "Just now"
     },
     {
-      "id": "5",
-      "name": "Alex Brown",
-      "email": "alex@example.com",
-      "status": "Inactive",
+      "id": "0.7148087898395412",
+      "name": "Feruzc",
+      "email": "Fedcdya@gmail.com",
+      "status": "Pending",
       "role": "Viewer",
-      "lastActive": "2 weeks ago"
-    },
-    {
-      "id": 0.3841797598193053,
-      "name": "Azamat",
-      "email": "uzakovazamat534@gmail.com",
-      "status": "Active",
-      "role": "Viewer",
-      "lastActive": "4 hour ago"
+      "lastActive": "5 hour ago"
     }
   ]
 }

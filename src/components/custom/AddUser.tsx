@@ -32,12 +32,12 @@ const AddUser: React.FC<AddUserProps> = ({ setModal, modal }) => {
         const formData = Object.fromEntries(fm.entries())
 
         const data = {
-            id: Math.random(),
+            id: Math.random().toString(),
             name: formData.name,
             email: formData.email,
             status,
             role,
-            lastActive: Math.floor(Math.random() * 5) + " hour ago"
+            lastActive: Math.floor(Math.random() * 5) + 1 + " hour ago"
         }
 
         const headers = {
