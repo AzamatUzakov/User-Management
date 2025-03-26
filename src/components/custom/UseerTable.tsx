@@ -33,11 +33,15 @@ const UserTable: React.FC<UserTableProps> = () => {
         throw new Error("ProductList must be used within a ProductProvider");
     }
 
-    const { users, setUsers } = context
+    const { users, setUsers, filteredUser, setFilteredUser } = context
     const { fetchData } = useApi(import.meta.env.VITE_PUBLIC_PATH)
     useEffect(() => {
         fetchData("/users", method.get)
-            .then(res => setUsers(res?.data))
+            .then(res => {
+                setUsers(res?.data)
+                setFilteredUser(res?.data)
+            })
+
 
     }, [])
 
@@ -60,14 +64,14 @@ const UserTable: React.FC<UserTableProps> = () => {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {users.map((user) => (
+                        {filteredUser.map((user) => (
                             <TableRow key={user.id} className="border hover:bg-gray-50">
                                 <TableCell className="py-6 px-6 font-medium text-gray-800">{user.name}</TableCell>
                                 <TableCell className="py-6 px-6 font-normal">{user.email}</TableCell>
                                 <TableCell className="py-6 px-6">
                                     <span className={`py-1 px-3 rounded-full text-xs font-semibold ${user.status === 'Active' ? 'bg-green-500 text-white' :
-                                            user.status === 'Inactive' ? 'bg-gray-200 text-black' :
-                                                'bg-orange-100 text-orange-600 border border-orange-500'
+                                        user.status === 'Inactive' ? 'bg-gray-200 text-black' :
+                                            'bg-orange-100 text-orange-600 border border-orange-500'
                                         }`}>{user.status}</span>
                                 </TableCell>
                                 <TableCell className="py-6  px-6">{user.role}</TableCell>

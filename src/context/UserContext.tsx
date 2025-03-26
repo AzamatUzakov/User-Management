@@ -16,17 +16,20 @@ interface UserProvider {
 interface UserType {
     users: Users[];
     setUsers: React.Dispatch<React.SetStateAction<Users[]>>;
+    filteredUser: Users[];
+    setFilteredUser: React.Dispatch<React.SetStateAction<Users[]>>;
 }
 
 
- const UserContext = createContext<UserType | undefined>(undefined)
+const UserContext = createContext<UserType | undefined>(undefined)
 
 export const UserProvider: React.FC<UserProvider> = ({ children }) => {
     const [users, setUsers] = useState<Users[]>([])
+    const [filteredUser, setFilteredUser] = useState<Users[]>([])
 
     return (
         <UserContext.Provider
-            value={{ users, setUsers }}
+            value={{ users, setUsers, filteredUser, setFilteredUser }}
         >
             {children}
         </UserContext.Provider>
